@@ -1,0 +1,17 @@
+[
+{
+  "modid": "ViewEMC",
+  "name": "ViewEMC",
+  "description": "View EMC allows you to view the EMC value of a block on waila.",
+  "version": "v1",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Silly511"],
+  "credits": "",
+  "logoFile": "",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
