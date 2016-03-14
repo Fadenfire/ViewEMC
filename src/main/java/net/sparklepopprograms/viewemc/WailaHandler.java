@@ -32,7 +32,7 @@ public class WailaHandler implements IWailaDataProvider {
 
         register.registerBodyProvider(new WailaHandler(), Block.class);
 
-        register.addConfig("EMC", "emc.showEmc", true);
+        register.addConfig("EMC", "emc.showEMC", true);
         register.addConfig("EMC", "emc.shiftToggleEMC", false);
     }
 	
@@ -62,13 +62,13 @@ public class WailaHandler implements IWailaDataProvider {
 			if (config.getConfig("emc.shiftToggleEMC")) {
 				if (accessor.getPlayer().isSneaking())
 					if (emc == 0) {
-						currenttip.add("No EMC");
+						currenttip.add("No EMC Value");
 					} else {
 						currenttip.add("EMC: " + emc);
 					}
 			} else {
 				if (emc == 0) {
-					currenttip.add("No EMC");
+					currenttip.add("No EMC Value");
 				} else {
 					currenttip.add("EMC: " + emc);
 				}

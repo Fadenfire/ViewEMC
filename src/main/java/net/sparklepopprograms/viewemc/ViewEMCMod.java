@@ -21,7 +21,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 @Mod(modid = "ViewEMC", name = "View EMC", version = "v1", dependencies = ViewEMCMod.dependencies)
 public class ViewEMCMod {
 	
-	public static final String dependencies = "required-after:Waila@[1.5.10,);required-after:ProjectE@[PE1.9.5,)";
+	public static final String dependencies = "required-after:DimensionalCore@[1.0.7,);required-after:Waila@[1.5.10,);required-after:ProjectE@[PE1.9.5,)";
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
