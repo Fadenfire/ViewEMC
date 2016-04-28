@@ -1,4 +1,4 @@
-package net.sparklepopprograms.viewemc;
+package net.silly511.viewemc;
 
 import java.util.List;
 
@@ -10,6 +10,8 @@ import net.minecraft.block.BlockOre;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -17,6 +19,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.silly511.core.helpers.FormatHelper;
+import net.silly511.core.helpers.WorldHelper;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -50,28 +54,21 @@ public class WailaHandler implements IWailaDataProvider {
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		int emc = 0;
 		
-		if (accessor.getBlock() == Blocks.skull) {
-			emc = ProjectEAPI.getEMCProxy().getValue(new ItemStack(Items.skull, 1, accessor.getMetadata()));
-		} else if (accessor.getBlock() == Blocks.redstone_wire) {
-			emc = ProjectEAPI.getEMCProxy().getValue(new ItemStack(Items.redstone));
-		} else {
-			emc = ProjectEAPI.getEMCProxy().getValue(accessor.getBlock());
-		}
+		Item item = accessor.getBlock().getItem(accessor.getWorld(), accessor.getPosition().blockX,  accessor.getPosition().blockY,  accessor.getPosition().blockZ);
+    	
+    	if (!(item == null)) {
+    		Block block = item instanceof ItemBlock && !accessor.getBlock().isFlowerPot() ? Block.getBlockFromItem(item) : accessor.getBlock();
+    		emc = ProjectEAPI.getEMCProxy().getValue(new ItemStack(item, 1, block.getDamageValue(accessor.getWorld(), accessor.getPosition().blockX,  accessor.getPosition().blockY,  accessor.getPosition().blockZ)));
+    	}
 		
-		if (config.getConfig("emc.showEmc")) {
+		if (config.getConfig("emc.showEMC")) {
 			if (config.getConfig("emc.shiftToggleEMC")) {
 				if (accessor.getPlayer().isSneaking())
-					if (emc == 0) {
-						currenttip.add("No EMC Value");
-					} else {
-						currenttip.add("EMC: " + emc);
-					}
+					if (emc != 0) 
+						currenttip.add(EnumChatFormatting.YELLOW + "EMC: " + EnumChatFormatting.WHITE + FormatHelper.numberWithCommas.format(emc) + EnumChatFormatting.RESET);
 			} else {
-				if (emc == 0) {
-					currenttip.add("No EMC Value");
-				} else {
-					currenttip.add("EMC: " + emc);
-				}
+				if (emc != 0)
+					currenttip.add(EnumChatFormatting.YELLOW + "EMC: " + EnumChatFormatting.WHITE + FormatHelper.numberWithCommas.format(emc) + EnumChatFormatting.RESET);
 			}
 		}
 		
@@ -85,8 +82,6 @@ public class WailaHandler implements IWailaDataProvider {
 
 	@Override
 	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-		
-		
 		return tag;
 	}
 	
