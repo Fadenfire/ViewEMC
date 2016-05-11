@@ -1,9 +1,11 @@
-package net.silly511.viewemc;
+package silly511.viewemc;
 
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import silly511.core.helpers.FormatHelper;
+import silly511.core.helpers.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockOre;
@@ -19,8 +21,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.silly511.core.helpers.FormatHelper;
-import net.silly511.core.helpers.WorldHelper;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;

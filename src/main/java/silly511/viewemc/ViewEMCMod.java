@@ -1,6 +1,8 @@
-package net.silly511.viewemc;
+package silly511.viewemc;
 
 import scala.Int;
+import silly511.core.DimensionalCore;
+import silly511.core.updatechecker.UpdateManager;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -16,8 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.silly511.core.DimensionalCore;
-import net.silly511.core.updatechecker.UpdateManager;
 import cpw.mods.fml.common.Mod.EventHandler;
 
 @Mod(modid = "ViewEMC", name = "View EMC", version = ViewEMCMod.version, dependencies = ViewEMCMod.dependencies)
@@ -28,7 +28,7 @@ public class ViewEMCMod {
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		FMLInterModComms.sendMessage("Waila", "register", "net.sparklepopprograms.viewemc.WailaHandler.callbackRegister");
+		FMLInterModComms.sendMessage("Waila", "register", "silly511.viewemc.WailaHandler.callbackRegister");
 		
 		UpdateManager.register("View EMC", DimensionalCore.updateURL + "view-emc/files", 4, this.version);
 		
