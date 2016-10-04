@@ -1,36 +1,15 @@
 package silly511.viewemc;
 
-import scala.Int;
-import silly511.core.DimensionalCore;
-import silly511.core.updatechecker.UpdateManager;
-import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import cpw.mods.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-@Mod(modid = "ViewEMC", name = "View EMC", version = ViewEMCMod.version, dependencies = ViewEMCMod.dependencies)
+@Mod(modid = "ViewEMC", name = "View EMC", version = "v5", dependencies = "required-after:Waila@[1.7.0,);required-after:ProjectE@[1.10.2-PE1.0.6B,)")
 public class ViewEMCMod {
-	
-	public static final String dependencies = "required-after:DimensionalCore@[1.0.7,);required-after:Waila@[1.5.10,);required-after:ProjectE@[PE1.9.5,)";
-	public static final String version = "v3";
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		FMLInterModComms.sendMessage("Waila", "register", "silly511.viewemc.WailaHandler.callbackRegister");
-		
-		UpdateManager.register("View EMC", DimensionalCore.updateURL + "view-emc/files", 4, this.version);
-		
+		FMLInterModComms.sendMessage("Waila", "register", "silly511.viewemc.WailaHandler.register");
 	}
 }

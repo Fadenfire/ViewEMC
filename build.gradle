@@ -1,44 +1,40 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
+
+apply plugin: 'net.minecraftforge.gradle.forge'
  
-apply plugin: 'forge'
- 
-version = "1.7.10-v3"
-group= "net.sparklepopprograms.viewemc"
+version = "1.10.2-v5"
+group= "silly511.viewemc"
 archivesBaseName = "ViewEMC"
 libsDirName = "../releases"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+dependencies {
+    compile files('build/libs/Waila-1.7.0-B3_1.9.4.jar')
+    compile files('build/libs/ProjectE-1.10.2-PE1.0.6B.jar')
+}
  
 minecraft {
-    version = "1.7.10-10.13.4.1558-1.7.10"
+    version = "1.10.2-12.18.1.2011"
+    mappings = "snapshot_20160518"
 }
 
 task dev(type: Jar) {
     from sourceSets.main.output
     from sourceSets.main.allJava
     classifier = 'dev'
-}
-
-dependencies {
-    compile files('build/libs/Waila-1.5.10_1.7.10.jar')
-    compile files('build/libs/ProjectE-1.7.10-PE1.9.5.jar')
-    compile files('build/libs/DimensionalCore-1.7.10-1.0.7-dev.jar')
 }
 
 
