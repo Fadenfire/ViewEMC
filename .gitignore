@@ -1,8 +1,6 @@
-.DS_Store
-build
-bin
-.settings
-.project
-.gradle
-.classpath
-releases
+.*
+
+/bin/
+/releases/
+/build/
+/libs/
