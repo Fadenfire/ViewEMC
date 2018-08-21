@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
  
-version = "1.12.2-v6"
+version = "1.12.2-v7"
 group = "silly511.viewemc"
 archivesBaseName = "ViewEMC"
 libsDirName = "../releases"
@@ -26,7 +26,7 @@ minecraft {
 
 dependencies {
     compile files('libs/Hwyla-1.8.26-B41_1.12.2-api.jar')
-    compile files('libs/ProjectE-1.12-PE1.3.0.jar')
+    compile files('libs/ProjectE-1.12-PE1.3.1B.jar')
 }
 
 processResources {
