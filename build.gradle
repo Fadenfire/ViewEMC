@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
  
-version = "1.12.2-v7"
+version = "1.12.2-v8"
 group = "silly511.viewemc"
 archivesBaseName = "ViewEMC"
 libsDirName = "../releases"

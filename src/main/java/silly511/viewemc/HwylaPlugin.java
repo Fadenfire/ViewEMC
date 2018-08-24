@@ -36,7 +36,7 @@ public class HwylaPlugin implements IWailaPlugin, IWailaDataProvider {
 	
 	@Override
 	public List<String> getWailaBody(ItemStack item, List<String> tooltip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		if ((!config.getConfig("emc.shiftToggleEMC") || accessor.getPlayer().isSneaking()) && EMCHelper.doesItemHaveEmc(item)) {
+		if ((!config.getConfig("emc.shiftToggle") || accessor.getPlayer().isSneaking()) && EMCHelper.doesItemHaveEmc(item)) {
 			long emc;
 			
 			try { //I have to do this because ProjectE changed EMC from int to long and I want to support both versions.
